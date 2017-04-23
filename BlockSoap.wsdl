@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns="http://example.com/example/soap/index.php" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BlockSoapBlock3"
+	targetNamespace="http://example.com/example/soap/index.php"
+	xmlns:wsdl1="http://example.com/example/soap/SoapBlockTypes/">
+
+	<wsdl:types>
+
+		<xsd:schema targetNamespace="http://example.com/example/soap/index.php">
+			<xsd:element name="changeStatus">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="guid" type="xsd:string" minOccurs="0"
+							maxOccurs="1" />
+						<xsd:element name="user" type="xsd:string" minOccurs="0"
+							maxOccurs="1"></xsd:element>
+						<xsd:element name="isBlock" type="xsd:boolean"
+							minOccurs="0" maxOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="changeStatusResponse" type="ClientStatus">
+
+			</xsd:element>
+			<xsd:element name="getStatus">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="checkguid" type="xsd:string"
+							minOccurs="1" maxOccurs="1"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getStatusResponse" type="ClientStatus">
+
+			</xsd:element>
+
+
+
+			<xsd:complexType name="ChangeStatusItem">
+				<xsd:sequence>
+					<xsd:element name="guid" type="xsd:string"></xsd:element>
+					<xsd:element name="user" type="xsd:string"></xsd:element>
+					<xsd:element name="isBlock" type="xsd:boolean"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+
+
+
+
+
+
+			<xsd:element name="changeStatusList">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="ClientStatusChange"
+							minOccurs="0" maxOccurs="99999">
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="changeStatusListResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="ClientStatus" minOccurs="0"
+							maxOccurs="99999"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:complexType name="ClientStatus">
+				<xsd:sequence>
+					<xsd:element name="guid" type="Guid"></xsd:element>
+					<xsd:element name="user" type="UserName"></xsd:element>
+					<xsd:element name="isBlock" type="BlockStatus"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+
+			<xsd:element name="getStatusList">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="in" type="xsd:string" minOccurs="0"
+							maxOccurs="999999"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="getStatusListResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+
+						<xsd:element name="out" type="ClientStatus" minOccurs="0"
+							maxOccurs="999999"></xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:simpleType name="Guid">
+				<xsd:restriction base="xsd:string"></xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="UserName">
+				<xsd:restriction base="xsd:string"></xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="BlockStatus">
+				<xsd:restriction base="xsd:boolean"></xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:complexType name="ClientStatusChange">
+				<xsd:sequence>
+					<xsd:element name="guid" type="xsd:string"></xsd:element>
+					<xsd:element name="user" type="xsd:string"></xsd:element>
+					<xsd:element name="isBlock" type="xsd:string"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+
+	</wsdl:types>
+	<wsdl:message name="changeStatusRequest">
+		<wsdl:part element="changeStatus" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="changeStatusResponse">
+		<wsdl:part element="changeStatusResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:message name="getStatusRequest">
+		<wsdl:part name="parameters" element="getStatus"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getStatusResponse">
+		<wsdl:part name="parameters" element="getStatusResponse"></wsdl:part>
+	</wsdl:message>
+
+
+
+
+	<wsdl:message name="changeStatusListRequest">
+		<wsdl:part name="parameters" element="changeStatusList"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="changeStatusListResponse">
+		<wsdl:part name="parameters" element="changeStatusListResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getStatusListRequest">
+		<wsdl:part name="parameters" element="getStatusList"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getStatusListResponse">
+		<wsdl:part name="parameters" element="getStatusListResponse"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="BlockSoapBlock3">
+		<wsdl:operation name="changeStatus">
+			<wsdl:input message="changeStatusRequest" />
+			<wsdl:output message="changeStatusResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getStatus">
+			<wsdl:input message="getStatusRequest"></wsdl:input>
+			<wsdl:output message="getStatusResponse"></wsdl:output>
+		</wsdl:operation>
+
+
+		<wsdl:operation name="changeStatusList">
+			<wsdl:input message="changeStatusListRequest"></wsdl:input>
+			<wsdl:output message="changeStatusListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getStatusList">
+			<wsdl:input message="getStatusListRequest"></wsdl:input>
+			<wsdl:output message="getStatusListResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="BlockSoapBlock3SOAP" type="BlockSoapBlock3">
+
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="changeStatus">
+
+			<soap:operation
+				soapAction="http://example.com/example/soap/index.php/changeStatus" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getStatus">
+
+			<soap:operation soapAction="http://example.com/example/soap/index.php/getStatus" />
+			<wsdl:input>
+
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="changeStatusList">
+			<soap:operation
+				soapAction="http://example.com/example/soap/index.php/changeStatusList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getStatusList">
+			<soap:operation
+				soapAction="http://example.com/example/soap/index.php/getStatusList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="BlockSoapBlock3">
+		<wsdl:port binding="BlockSoapBlock3SOAP" name="BlockSoapBlock3SOAP">
+			<soap:address location="http://example.com/example/soap/index.php" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
